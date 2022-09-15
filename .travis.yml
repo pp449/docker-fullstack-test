@@ -1,0 +1,23 @@
+language: generic
+
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t pp449/react-test-app -f ./frontend/dockerfile.dev ./fronted
+
+script:
+  - docker run -e CI=true pp449/react-test-app npm run test
+
+after_success:
+  - docker build -t pp449/docker-frontend ./frontend
+  - docker build -t pp449/docker-backend ./backend
+  - docker build -t pp449/docker-nginx ./nginx
+
+  - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_ID" --password-stdin
+
+  - docker push pp449/docker-frontend
+  - docker push pp449/docker-backend
+  - docker push pp449/docker-nginx
