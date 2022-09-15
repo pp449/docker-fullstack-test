@@ -58,8 +58,6 @@ app.post('/api/value', function (req, res, next) {
 })
 
 
-
-
 app.listen(5001, () => {
     console.log('애플리케이션이 5001번 포트에서 시작되었습니다.')
 })
