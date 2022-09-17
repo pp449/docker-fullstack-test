@@ -31,13 +31,3 @@ services:
       MYSQL_ROOT_PASSWORD: johnahn777
       MYSQL_DATABASE: myapp
       MYSQL_PORT: 3306
-
-  # mysql: 
-  #   build: ./mysql
-  #   restart: unless-stopped
-  #   container_name: app_mysql
-  #   ports:
-  #     - "3306:3306"
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: johnahn
-  #     MYSQL_DATABASE: myapp
